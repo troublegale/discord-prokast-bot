@@ -12,6 +12,8 @@ client.once('ready', async () => {
   console.log(`Logged in as ${client.user.tag}`);
 
   const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN);
+  // Clear old global commands
+  await rest.put(Routes.applicationCommands(client.user.id), { body: [] });
   for (const guild of client.guilds.cache.values()) {
     await rest.put(Routes.applicationGuildCommands(client.user.id, guild.id), {
       body: [command.toJSON()],
