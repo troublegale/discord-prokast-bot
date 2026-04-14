@@ -45,7 +45,7 @@ client.on('interactionCreate', async (interaction) => {
 
   cooldowns.set(userId, now);
 
-  await interaction.reply({ content: '💀 Прокаст начался...', ephemeral: true });
+  await interaction.reply(`${interaction.user} юзанул прокаст`);
   const channel = interaction.channel;
 
   await channel.send('...');
